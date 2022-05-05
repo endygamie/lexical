@@ -124,7 +124,7 @@ function ExcalidrawComponent({
     });
   }, [editor, nodeKey]);
 
-  const setData = (newData: ReadOnlyArray<ExcalidrawElementFragment>) => {
+  const setData = (newData: ReadonlyArray<ExcalidrawElementFragment>) => {
     if (editor.isReadOnly()) {
       return;
     }
@@ -180,7 +180,7 @@ function ExcalidrawComponent({
         {(isSelected || isResizing) && (
           <ImageResizer
             showCaption={true}
-            setShowCaption={() => {}}
+            setShowCaption={() => null}
             imageRef={imageContainerRef}
             editor={editor}
             onResizeStart={onResizeStart}
@@ -203,7 +203,7 @@ export class ExcalidrawNode extends DecoratorNode<JSX.Element> {
     return new ExcalidrawNode(node.__data, node.__key);
   }
 
-  constructor(data?: string = '[]', key?: NodeKey) {
+  constructor(data = '[]', key?: NodeKey) {
     super(key);
     this.__data = data;
   }
